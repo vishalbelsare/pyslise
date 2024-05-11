@@ -1,17 +1,32 @@
-![Example of Robust Regression](examples/pyslise_banner.png)
+![PySLISE Banner Image](docs/pyslise_banner.webp)  
+[![PyPI](https://img.shields.io/pypi/v/slise)](https://pypi.org/project/slise/)
+[![Documentation](https://github.com/edahelsinki/pyslise/actions/workflows/python-docs.yml/badge.svg)](https://edahelsinki.github.io/pyslise/docs/slise/)
+[![Tests](https://github.com/edahelsinki/pyslise/actions/workflows/python-pytest.yml/badge.svg)](https://github.com/edahelsinki/pyslise/actions/workflows/python-pytest.yml)
+[![License: MIT](https://img.shields.io/github/license/edahelsinki/pyslise)](https://github.com/edahelsinki/pyslise/blob/master/LICENSE)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/edahelsinki/pyslise/HEAD?labpath=examples)
+
 # SLISE - Sparse Linear Subset Explanations
 
-Python implementation of the SLISE algorithm. The SLISE algorithm can be used for
-both robust regression and to explain outcomes from black box models.
-For more details see [the paper](https://rdcu.be/bVbda), alternatively for a more informal
-overview see [the presentation](https://github.com/edahelsinki/slise/raw/master/vignettes/presentation.pdf),
-or [the poster](https://github.com/edahelsinki/slise/raw/master/vignettes/poster.pdf).
+Python implementation of the SLISE algorithm. The SLISE algorithm can be used for both robust regression and to explain outcomes from black box models.
+For more details see the [conference paper](https://rdcu.be/bVbda), the [robust regression paper](https://rdcu.be/cFRHD), or the [local explanation paper](https://doi.org/10.3389/fcomp.2023.1143904).
+Alternatively for a more informal overview see [the presentation](https://github.com/edahelsinki/slise/raw/master/vignettes/presentation.pdf), or [the poster](https://github.com/edahelsinki/slise/raw/master/vignettes/poster.pdf).
+Finally, for learning to use the python package there are several [examples](https://github.com/edahelsinki/pyslise/tree/master/examples/) and [the documentation](https://edahelsinki.github.io/pyslise/docs/slise/).
 
-> **Björklund A., Henelius A., Oikarinen E., Kallonen K., Puolamäki K.**  
-> *Sparse Robust Regression for Explaining Classifiers.*  
+> *Björklund A., Henelius A., Oikarinen E., Kallonen K., Puolamäki K.* (2019)  
+> **Sparse Robust Regression for Explaining Classifiers.**  
 > Discovery Science (DS 2019).  
 > Lecture Notes in Computer Science, vol 11828, Springer.  
-> https://doi.org/10.1007/978-3-030-33778-0_27
+> https://doi.org/10.1007/978-3-030-33778-0_27  
+
+> *Björklund A., Henelius A., Oikarinen E., Kallonen K., Puolamäki K.* (2022).  
+> **Robust regression via error tolerance.**  
+> Data Mining and Knowledge Discovery.  
+> https://doi.org/10.1007/s10618-022-00819-2  
+
+> *Björklund A., Henelius A., Oikarinen E., Kallonen K., Puolamäki K.* (2023)  
+> **Explaining any black box model using real data.**  
+> Frontiers in Computer Science 5:1143904.  
+> https://doi.org/10.3389/fcomp.2023.1143904  
 
 ## The idea
 
@@ -27,32 +42,40 @@ To install this package just run:
 pip install slise
 ```
 
-Or install the latest version directly from GitHub with:
+Or install the latest version directly from GitHub:
 
 ```sh
-pip install https://github.com/edahelsinki/pyslise
+pip install git+https://github.com/edahelsinki/pyslise
 ```
 
 Alternatively you can download the repo and run `python -m build` to build a wheel, or `pip install .` to install it locally.
 
-### Other Languages
+### Numba
 
-The (original) R implementation can be found [here](https://github.com/edahelsinki/slise).
+SLISE uses [Numba](https://numba.pydata.org/) to speed up the calculations. You might want to install the optional libraries to get the most out of Numba:
+
+```sh
+pip install "slise[tbb]"
+```
+
+## Other implementations
+
+The (original) **R** implementation can be found [here](https://github.com/edahelsinki/slise).
 
 ## Examples
 
 Here are two quick examples of SLISE in action. For more detailed examples, with descriptions on how to create and interpret them, see the [examples](https://github.com/edahelsinki/pyslise/tree/master/examples) directory.
 
-> ![Example of Robust Regression](examples/ex1.png)  
+> ![Example of Robust Regression](docs/ex1.webp)  
 > SLISE is a robust regression algorithm, which means that it is able to handle outliers. This is in contrast to, e.g., ordinary least-squares regression, which gives skewed results when outliers are present.
 
 &nbsp;
-> ![Example of Robust Regression](examples/ex2.png)  
+> ![Example of Explanation](docs/ex2.webp)  
 > SLISE can also be used to explain outcomes from black box models by locally approximating the complex models with a simpler linear model.
 
 ## Dependencies
 
-This implementation is requires Python 3 and the following packages:
+This implementation requires Python 3 and the following packages:
 
 - matplotlib
 - numba
